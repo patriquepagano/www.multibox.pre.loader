@@ -1,5 +1,4 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "php/00.code.php";
 
 // Conteudo principal agora eh estatico (sem log externo)
 function getLocalIp()
@@ -91,6 +90,7 @@ if ($is_tvbox_client) {
 $form_status = "";
 $saved_payload = null;
 $show_form = false;
+$client_class = ($client_label === 'TVBOX') ? 'client-tvbox' : (($client_label === 'AndroidCel' || $client_label === 'iOS') ? 'client-mobile' : 'client-pc');
 
 $qr_base_dir = $_SERVER['DOCUMENT_ROOT'] . "/.code/qrcode";
 $qr_cache_dir = $qr_base_dir . "/cache";
@@ -182,7 +182,7 @@ if ($cached_ip !== $local_ip || !file_exists($qr_file)) {
 $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
 ?>
 <!DOCTYPE html>
-<html>
+<html class="<?php echo $client_class; ?>">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -249,9 +249,8 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
         }
     </style>
 </head>
-<body class="page-index-main">
-    <!-- Navigation -->
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/index.navbar.php"; ?>
+<body class="page-index-main <?php echo $client_class; ?>">
+    <!-- Navigation removed (navbar not used) -->
     <!-- Container Start -->
     <div class="container" style="margin-top: 1px;" align="center">
         <div class="row">
@@ -268,6 +267,9 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                         <button type="button" class="info-btn" id="resolution-info">Resolução: -- x --</button>
                         <button type="button" class="info-btn" id="client-info">Cliente: <?php echo $client_label; ?></button>
                         <button type="button" class="info-btn" id="ua-info">UA: <?php echo htmlspecialchars($user_agent, ENT_QUOTES, 'UTF-8'); ?></button>
+                        <?php if ($client_label === 'TVBOX') { ?>
+                            <button type="button" class="info-btn" id="tvbox-next">Proxima</button>
+                        <?php } ?>
                     </div>
                     <?php if ($client_label === 'AndroidCel' || $client_label === 'iOS') { ?>
                         <p>🏠 Este acesso funciona apenas na sua casa, dentro da sua rede pessoal. 🔒 Pela internet não vai funcionar, para sua segurança.</p>
@@ -339,10 +341,6 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                     </ul>
                 </div>
                 <div class="news-block">
-                    <h4>News</h4>
-                    <?php include $_SERVER['DOCUMENT_ROOT'] . "/bloco.news.php"; ?>
-                </div>
-                <div class="news-block">
                     <h4>Bloco 6</h4>
                     <p>Texto de teste para validar a paginação no TVBOX.</p>
                 </div>
@@ -354,13 +352,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
         </div>
         <!-- Container End -->
         <!-- Javascript Libraries -->
-        <script src="/js/jquery.js"></script>
         <script>
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "php/scripts.php"; ?>
-            // Encaminha comandos para o backend
-            function doGet(s) {
-                $.get('index.php?oper=' + s, function(data) {});
-            }
             (function () {
                 var toggle = document.getElementById('mobile-theme-toggle');
                 if (!toggle) return;
@@ -398,6 +390,8 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             })();
             (function () {
                 if (!document.documentElement.classList.contains('client-tvbox')) return;
+                var nextBtn = document.getElementById('tvbox-next');
+                if (!nextBtn) return;
                 var blocks = Array.prototype.slice.call(document.querySelectorAll('.news-grid .news-block'));
                 if (!blocks.length) return;
                 var perPage = 2;
@@ -410,14 +404,11 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                         block.style.display = (idx >= start && idx < end) ? '' : 'none';
                     });
                 }
-                var nextBtn = document.getElementById('tvbox-next');
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        page = (page + 1) % totalPages;
-                        render();
-                    });
-                }
+                nextBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    page = (page + 1) % totalPages;
+                    render();
+                });
                 render();
             })();
         </script>

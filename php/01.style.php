@@ -97,27 +97,6 @@
         .container {
             background-color: #0d1117;
         }
-        #navigation-bar,
-        .navbar-inverse,
-        .navbar {
-            background-color: #010409;
-            border-color: #010409;
-            border-radius: 0;
-        }
-        #navigation-bar .container {
-            width: 100%;
-            padding-left: 0;
-            padding-right: 0;
-        }
-        #navigation-bar .navbar-header {
-            width: 100%;
-            text-align: center;
-            background-color: #010409;
-        }
-        #navigation-bar .navbar-header a {
-            display: inline-block;
-            float: none;
-        }
         button,
         .btn,
         input,
@@ -201,27 +180,6 @@
     .force-desktop-theme .container {
         background-color: #0d1117;
     }
-    .force-desktop-theme #navigation-bar,
-    .force-desktop-theme .navbar-inverse,
-    .force-desktop-theme .navbar {
-        background-color: #010409;
-        border-color: #010409;
-        border-radius: 0;
-    }
-    .force-desktop-theme #navigation-bar .container {
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .force-desktop-theme #navigation-bar .navbar-header {
-        width: 100%;
-        text-align: center;
-        background-color: #010409;
-    }
-    .force-desktop-theme #navigation-bar .navbar-header a {
-        display: inline-block;
-        float: none;
-    }
     .force-desktop-theme button,
     .force-desktop-theme .btn,
     .force-desktop-theme input,
@@ -273,7 +231,7 @@
             margin-bottom: 12px;
         }
     }
-    /* TVBOX index: layout sem rolagem com duas colunas e espaco para navbar lateral */
+    /* TVBOX index: layout sem rolagem com duas colunas */
     .client-tvbox .page-index-main {
         overflow: hidden;
     }
@@ -281,19 +239,19 @@
         padding-top: 0 !important;
     }
     .client-tvbox body > .container {
-        margin-right: 170px;
+        margin-right: 0;
         margin-left: 0;
-        width: calc(100% - 170px);
-        max-width: calc(100% - 170px);
+        width: 100%;
+        max-width: 100%;
         margin-top: 0 !important;
         padding-top: 0 !important;
         padding-right: 6px;
     }
     .client-tvbox .page-index-main .container {
-        margin-right: 170px;
+        margin-right: 0;
         margin-left: 0;
-        width: calc(100% - 170px);
-        max-width: calc(100% - 170px);
+        width: 100%;
+        max-width: 100%;
         margin-top: 0 !important;
         padding-top: 0 !important;
         padding-right: 6px;
@@ -324,38 +282,6 @@
         overflow: hidden;
     }
     .client-tvbox .page-index-main .news-block:last-child {
-        margin-right: 0 !important;
-    }
-    /* TVBOX news: mesmo comportamento do indexMain */
-    .client-tvbox .page-news {
-        overflow: hidden;
-    }
-    .client-tvbox .page-news .container {
-        margin-right: 170px;
-        margin-left: 0;
-        width: calc(100% - 170px);
-        max-width: calc(100% - 170px);
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-        padding-right: 6px;
-    }
-    .client-tvbox .page-news .news-grid {
-        display: flex !important;
-        flex-wrap: nowrap;
-        align-items: stretch;
-        text-align: left;
-        height: calc(100vh - 20px);
-    }
-    .client-tvbox .page-news .news-block {
-        flex: 1 1 0;
-        width: auto !important;
-        min-width: 0;
-        margin: 0 8px 0 0 !important;
-        height: calc(100vh - 20px);
-        box-sizing: border-box;
-        overflow: hidden;
-    }
-    .client-tvbox .page-news .news-block:last-child {
         margin-right: 0 !important;
     }
     .client-tvbox .page-index-main .news-block {
