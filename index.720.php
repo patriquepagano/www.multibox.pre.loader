@@ -112,28 +112,28 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             text-align: center;
         }
         .tvbox-720-title {
-            font-size: 30px;
+            font-size: 32px;
             margin: 0 0 10px 0;
         }
         .tvbox-720-left p,
         .tvbox-720-left li {
-            font-size: 18px;
-            line-height: 1.3;
+            font-size: 19px;
+            line-height: 1.32;
             margin: 6px 0;
         }
         .tvbox-720-left ol {
             margin: 6px 0 8px 20px;
         }
         .tvbox-720-qr-title {
-            font-size: 22px;
+            font-size: 24px;
             margin: 0 0 8px 0;
         }
         .tvbox-720-qr-note {
-            font-size: 16px;
+            font-size: 17px;
             margin: 6px 0 10px 0;
         }
         .tvbox-720-qr-ip {
-            font-size: 15px;
+            font-size: 16px;
             margin: 0 0 10px 0;
             word-break: break-word;
         }
@@ -150,7 +150,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
     <div class="tvbox-720">
         <div class="tvbox-720-inner">
             <div class="tvbox-720-left">
-                <h3 class="tvbox-720-title">🤖 Painel TVBOX</h3>
+                <h3 class="tvbox-720-title">🤖 Painel TVBOX - O seu Registro é: 📝『 3457 』</h3>
                 <div>
                     <p>🙂 Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
                     <p>⚠️ Nos últimos meses, muitas marcas pararam por bloqueios e por questões de impostos e taxas. 💸 Com menos clientes em serviços oficiais de streaming, a arrecadação caiu, e isso mudou o cenário no Brasil.</p>
@@ -165,8 +165,8 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                 </div>
             </div>
             <div class="tvbox-720-right">
-                <h3 class="tvbox-720-qr-title">📲 QR Code do Painel</h3>
-                <div class="tvbox-720-qr-note">Use o QR Code para abrir este painel no celular.</div>
+                <h3 class="tvbox-720-qr-title">📲 Entre em contato</h3>
+                <div class="tvbox-720-qr-note">Use o QR Code para abrir este painel no celular .</div>
                 <div class="tvbox-720-qr-ip">Endereço local: http://<?php echo $local_ip; ?></div>
                 <img class="tvbox-720-qr-image" src="/ip_qr.png?v=<?php echo $qr_version; ?>" alt="QR Code IP TVBOX">
             </div>
