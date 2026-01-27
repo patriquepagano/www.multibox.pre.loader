@@ -26,12 +26,6 @@ fi
 - Nunca ler a pasta `.git`.
 - Quando eu pedir um comando simples para debugar em terminal remoto, sempre envie os comandos em blocos de código (```bash ... ```), um comando por bloco, para facilitar copiar.
 
-## Notas de layout global (CSS compartilhado)
-- Ponto central de CSS global: `php/00.head.css.php` (links para CSS base) + `php/01.style.php` (estilos globais).
-- No site atual apenas `index.php` inclui esses arquivos no `<head>`.
-- `php/00.head.css.php` puxa os arquivos `/.code/css/*.css` (Bootstrap, heroic-features, catalogo, utils, blueimp-gallery, video-js).
-- `php/01.style.php` define tema escuro e grid padrão (`.news-grid`, `.news-block`), além do toggle `.force-desktop-theme` para forçar o tema escuro em mobile.
-- `php/01.style.php` também define ajustes de densidade por altura (telas altas/médias/baixas) para caber mais blocos sem rolagem.
 
 ## Detecção de device (atual)
 - A detecção atual é por User-Agent (UA) e está centralizada em `index.php`.
@@ -44,7 +38,7 @@ fi
 - Fallback: `MOBILE`.
 
 ## Estado atual do site (atualizado)
-- O site atual usa somente `index.php` como pagina principal
+- O site atual usa somente `index.php` como pagina principal e paginas por resoluções para cada tipo de monitor ligado ao tvbox
 
 ## Index.php: objetivo e funcionamento atual
 - Objetivo: pagina unica do painel, com comunicado principal e area de interacao (QR no TVBOX ou cadastro em PC/celular).
@@ -57,7 +51,4 @@ fi
 - CSS: usa `php/00.head.css.php` + `php/01.style.php`, tema escuro e layout em coluna unica (sem grid/colunas).
 - JS: apenas toggle de tema escuro no mobile (salvo em `localStorage`).
 
-## Problema em aberto
-- No TVBOX (Chrome antigo + controle remoto), a rolagem da pagina para antes do final; QR Code fica parcialmente fora da area visivel.
-- A hipotese atual e limitacao de scroll no navegador/controle remoto, nao resolvida ainda.
 

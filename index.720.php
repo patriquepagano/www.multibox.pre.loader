@@ -112,28 +112,28 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             text-align: center;
         }
         .tvbox-720-title {
-            font-size: 26px;
+            font-size: 30px;
             margin: 0 0 10px 0;
         }
         .tvbox-720-left p,
         .tvbox-720-left li {
-            font-size: 16px;
-            line-height: 1.25;
+            font-size: 18px;
+            line-height: 1.3;
             margin: 6px 0;
         }
         .tvbox-720-left ol {
             margin: 6px 0 8px 20px;
         }
         .tvbox-720-qr-title {
-            font-size: 20px;
+            font-size: 22px;
             margin: 0 0 8px 0;
         }
         .tvbox-720-qr-note {
-            font-size: 15px;
+            font-size: 16px;
             margin: 6px 0 10px 0;
         }
         .tvbox-720-qr-ip {
-            font-size: 14px;
+            font-size: 15px;
             margin: 0 0 10px 0;
             word-break: break-word;
         }
@@ -144,11 +144,6 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             max-height: 38vh;
             border-radius: 8px;
         }
-        .tvbox-720-footer {
-            font-size: 12px;
-            color: #9aa4af;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body class="page-index-main <?php echo $client_class; ?>">
@@ -156,17 +151,18 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
         <div class="tvbox-720-inner">
             <div class="tvbox-720-left">
                 <h3 class="tvbox-720-title">🤖 Painel TVBOX</h3>
-                <p>🙂 Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
-                <p>⚠️ Nos últimos meses, muitas marcas pararam por bloqueios e por questões de impostos e taxas.</p>
-                <p>👥 Equipes envolvidas:</p>
-                <ol>
-                    <li>🏭 Fabricante: produz o aparelho fisico e garante a qualidade do hardware.</li>
-                    <li>🛠️ Plataforma (nós): fornece o sistema base, atualizações e infraestrutura.</li>
-                    <li>🧑‍💼 Revendedor: entrega a solução final e presta suporte ao cliente.</li>
-                </ol>
-                <p>⚠️ Importante: os aplicativos e o conteúdo são de responsabilidade do revendedor.</p>
-                <p>🧾 Estamos organizando os aparelhos por revendedor oficial para manter estabilidade e atualizações.</p>
-                <div class="tvbox-720-footer">Este modo é otimizado para 720p sem rolagem.</div>
+                <div>
+                    <p>🙂 Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
+                    <p>⚠️ Nos últimos meses, muitas marcas pararam por bloqueios e por questões de impostos e taxas. 💸 Com menos clientes em serviços oficiais de streaming, a arrecadação caiu, e isso mudou o cenário no Brasil.</p>
+                    <p>👥 Entenda as equipes envolvidas:</p>
+                    <ol>
+                        <li>🏭 Fabricante: produz o aparelho fisico e garante a qualidade do hardware.</li>
+                        <li>🛠️ Plataforma (nós): fornecemos o sistema base, atualizações e a infraestrutura que mantém o aparelho funcionando.</li>
+                        <li>🧑‍💼 Revendedor: entrega a solução final da marca, publica os aplicativos e presta o suporte ao cliente.</li>
+                    </ol>
+                    <p>⚠️ Importante: os aplicativos e o conteúdo são de responsabilidade do revendedor. 📵 Nós não temos acesso aos apps nem ao conteúdo enviado.</p>
+                    <p>🧾 Por que estamos pedindo recadastro? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas, e isso pressiona toda as equipes. 📈 Além disso, o crescimento de ativações e o controle exigido pelos órgãos reguladores aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos organizar todos os aparelhos por revendedor oficial.</p>
+                </div>
             </div>
             <div class="tvbox-720-right">
                 <h3 class="tvbox-720-qr-title">📲 QR Code do Painel</h3>
