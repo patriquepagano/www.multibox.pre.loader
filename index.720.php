@@ -127,10 +127,29 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
         .tvbox-720-qr-title {
             font-size: 24px;
             margin: 0 0 8px 0;
+            text-align: center;
         }
         .tvbox-720-qr-note {
             font-size: 17px;
             margin: 6px 0 10px 0;
+        }
+        .tvbox-720-qr-copy p {
+            font-size: 17px;
+            line-height: 1.3;
+            margin: 6px 0;
+        }
+        .tvbox-720-qr-copy,
+        .tvbox-720-qr-desc,
+        .tvbox-720-qr-note,
+        .tvbox-720-qr-ip {
+            text-align: left;
+            align-self: stretch;
+        }
+        .tvbox-720-sep {
+            width: 100%;
+            height: 1px;
+            background: #2b2f36;
+            margin: 10px 0;
         }
         .tvbox-720-qr-ip {
             font-size: 16px;
@@ -158,15 +177,24 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                     <ol>
                         <li>🏭 Fabricante: produz o aparelho fisico e garante a qualidade do hardware.</li>
                         <li>🛠️ Plataforma (nós): fornecemos o sistema base, atualizações e a infraestrutura que mantém o aparelho funcionando.</li>
-                        <li>👨‍💼 Revendedor: entrega a solução final da marca, publica os aplicativos e presta o suporte ao cliente.</li>
+                        <li>🤝 Revendedor: entrega a solução final da marca, publica os aplicativos e presta o suporte ao cliente.</li>
                     </ol>
-                    <p>⚠️ Importante: os aplicativos e o conteúdo são de responsabilidade do revendedor. 📵 Nós não temos acesso aos apps nem ao conteúdo enviado.</p>
-                    <p>📝 Por que estamos pedindo recadastro? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas, e isso pressiona toda as equipes. 📈 Além disso, o crescimento de ativações e o controle exigido pelos órgãos reguladores aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos organizar todos os aparelhos por revendedor oficial.</p>
+                    <p>⚠️ Importante: os aplicativos e o conteúdo são de responsabilidade do 🤝 revendedor. 🚫 Nós não temos acesso aos 📦 apps nem ao conteúdo enviado.</p>
+                    <p>📝 Por que estamos pedindo recadastro? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas 💸, e isso pressiona toda as 😩 equipes. Além disso, o crescimento de ativações 📈 e o controle exigido pelos "órgãos reguladores 🔫" aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos 📒 catalogar todos os aparelhos por revendedor oficial.</p>
                 </div>
             </div>
             <div class="tvbox-720-right">
-                <h3 class="tvbox-720-qr-title">📲 Entre em contato</h3>
-                <div class="tvbox-720-qr-note">Use o QR Code para abrir este painel no celular .</div>
+                <div class="tvbox-720-qr-copy">
+                    <h3 class="tvbox-720-qr-title">📲 Contate seu revendedor 🤝</h3>
+                    <p>Fale com o revendedor e informe o registro <b>📝『 3457 』</b>.<br> Ele vai localizar e te ajudar.</p>
+                </div>
+                <div class="tvbox-720-sep"></div>
+                <h3 class="tvbox-720-qr-title">📲 Entre em contato Conosco 🛠️</h3>
+                <div class="tvbox-720-qr-desc">
+                    <p>Se não lembra ou perdeu o contato com o revendedor, use o QR Code abaixo para abrir o Painel TVBOX no celular e preencher o formulário. Nós vamos te ajudar.</p>
+                </div>
+
+                <div class="tvbox-720-qr-note">Use o QR Code para abrir este painel no celular.</div>
                 <div class="tvbox-720-qr-ip">Endereço local: http://<?php echo $local_ip; ?></div>
                 <img class="tvbox-720-qr-image" src="/ip_qr.png?v=<?php echo $qr_version; ?>" alt="QR Code IP TVBOX">
             </div>
