@@ -117,8 +117,8 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
         }
         .tvbox-720-left p,
         .tvbox-720-left li {
-            font-size: 19px;
-            line-height: 1.32;
+            font-size: 20px;
+            line-height: 1.34;
             margin: 6px 0;
         }
         .tvbox-720-left ol {
