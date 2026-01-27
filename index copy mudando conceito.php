@@ -20,62 +20,20 @@ $saved_payload = null; // ultimo cadastro salvo (se existir)
 $show_form = false; // controla se mostra o formulario ou o resumo
 $client_class = ($client_label === 'TVBOX') ? 'client-tvbox' : (($client_label === 'AndroidCel' || $client_label === 'iOS') ? 'client-mobile' : 'client-pc'); // classe base para CSS
 
-// TVBOX: detecta altura via query param (definido por JS no primeiro load) e redireciona para layout fixo
-if ($client_label === 'TVBOX') {
-    $tvh = isset($_GET['tvh']) ? intval($_GET['tvh']) : 0;
-    if ($tvh <= 0) {
-        ?>
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="google" content="notranslate">
-            <meta http-equiv="Content-Language" content="pt-br">
-            <title>TVBOX</title>
-            <style>
-                html, body { height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: #0d1117; color: #c9d1d9; font-family: Arial, sans-serif; }
-            </style>
-        </head>
-        <body>
-            <div>Carregando modo TVBOX...</div>
-            <script>
-                (function () {
-                    var h = window.innerHeight || 0;
-                    var qs = window.location.search || '';
-                    if (qs.indexOf('tvh=') === -1) {
-                        var sep = qs.indexOf('?') === -1 ? '?' : '&';
-                        window.location.replace(window.location.pathname + qs + sep + 'tvh=' + h);
-                    }
-                })();
-            </script>
-        </body>
-        </html>
-        <?php
-        exit;
-    }
-    // Por enquanto só 720p
-    require $_SERVER['DOCUMENT_ROOT'] . "/index.720.php";
-    exit;
-}
-
 // QR Code do IP local (usado apenas no modo TVBOX)
-if (!function_exists('getLocalIp')) {
-    function getLocalIp()
-    {
-        if (!empty($_SERVER['SERVER_ADDR'])) {
-            return $_SERVER['SERVER_ADDR'];
-        }
-        $hostname = gethostname();
-        if ($hostname) {
-            $resolved = gethostbyname($hostname);
-            if ($resolved && $resolved !== $hostname) {
-                return $resolved;
-            }
-        }
-        return "0.0.0.0";
+function getLocalIp()
+{
+    if (!empty($_SERVER['SERVER_ADDR'])) {
+        return $_SERVER['SERVER_ADDR'];
     }
+    $hostname = gethostname();
+    if ($hostname) {
+        $resolved = gethostbyname($hostname);
+        if ($resolved && $resolved !== $hostname) {
+            return $resolved;
+        }
+    }
+    return "0.0.0.0";
 }
 
 $local_ip = getLocalIp();

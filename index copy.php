@@ -20,62 +20,20 @@ $saved_payload = null; // ultimo cadastro salvo (se existir)
 $show_form = false; // controla se mostra o formulario ou o resumo
 $client_class = ($client_label === 'TVBOX') ? 'client-tvbox' : (($client_label === 'AndroidCel' || $client_label === 'iOS') ? 'client-mobile' : 'client-pc'); // classe base para CSS
 
-// TVBOX: detecta altura via query param (definido por JS no primeiro load) e redireciona para layout fixo
-if ($client_label === 'TVBOX') {
-    $tvh = isset($_GET['tvh']) ? intval($_GET['tvh']) : 0;
-    if ($tvh <= 0) {
-        ?>
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="google" content="notranslate">
-            <meta http-equiv="Content-Language" content="pt-br">
-            <title>TVBOX</title>
-            <style>
-                html, body { height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: #0d1117; color: #c9d1d9; font-family: Arial, sans-serif; }
-            </style>
-        </head>
-        <body>
-            <div>Carregando modo TVBOX...</div>
-            <script>
-                (function () {
-                    var h = window.innerHeight || 0;
-                    var qs = window.location.search || '';
-                    if (qs.indexOf('tvh=') === -1) {
-                        var sep = qs.indexOf('?') === -1 ? '?' : '&';
-                        window.location.replace(window.location.pathname + qs + sep + 'tvh=' + h);
-                    }
-                })();
-            </script>
-        </body>
-        </html>
-        <?php
-        exit;
-    }
-    // Por enquanto só 720p
-    require $_SERVER['DOCUMENT_ROOT'] . "/index.720.php";
-    exit;
-}
-
 // QR Code do IP local (usado apenas no modo TVBOX)
-if (!function_exists('getLocalIp')) {
-    function getLocalIp()
-    {
-        if (!empty($_SERVER['SERVER_ADDR'])) {
-            return $_SERVER['SERVER_ADDR'];
-        }
-        $hostname = gethostname();
-        if ($hostname) {
-            $resolved = gethostbyname($hostname);
-            if ($resolved && $resolved !== $hostname) {
-                return $resolved;
-            }
-        }
-        return "0.0.0.0";
+function getLocalIp()
+{
+    if (!empty($_SERVER['SERVER_ADDR'])) {
+        return $_SERVER['SERVER_ADDR'];
     }
+    $hostname = gethostname();
+    if ($hostname) {
+        $resolved = gethostbyname($hostname);
+        if ($resolved && $resolved !== $hostname) {
+            return $resolved;
+        }
+    }
+    return "0.0.0.0";
 }
 
 $local_ip = getLocalIp();
@@ -256,6 +214,9 @@ if ($client_label === 'TVBOX') {
                                 <span>Tema escuro</span>
                             </label>
                         <?php } ?>
+                        <button type="button" class="info-btn" id="resolution-info">Resolução: -- x --</button>
+                        <button type="button" class="info-btn" id="client-info">Cliente: <?php echo $client_label; ?></button>
+                        <button type="button" class="info-btn" id="ua-info">UA: <?php echo htmlspecialchars($user_agent, ENT_QUOTES, 'UTF-8'); ?></button>
                     </div>
                     <div>
                         <p>🙂 Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
@@ -270,12 +231,12 @@ if ($client_label === 'TVBOX') {
                         <p>🧾 Por que estamos pedindo recadastro? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas, e isso pressiona toda as equipes. 📈 Além disso, o crescimento de ativações e o controle exigido pelos órgãos reguladores aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos organizar todos os aparelhos por revendedor oficial.</p>
                     </div>
                     <hr>
-                        <?php if ($client_label === 'TVBOX') { ?>
-                            <h3>📲 QR Code do Painel</h3>
-                            <div class="qr-section">
-                                <p>Use o QR Code para abrir este painel no celular.</p>
-                                <p>Endereço local: http://<?php echo $local_ip; ?></p>
-                                <img class="qr-image" src="/ip_qr.png?v=<?php echo $qr_version; ?>" alt="QR Code IP TVBOX">
+                    <?php if ($client_label === 'TVBOX') { ?>
+                        <h3>📲 QR Code do Painel</h3>
+                        <div class="qr-section">
+                            <p>Use o QR Code para abrir este painel no celular.</p>
+                            <p>Endereço local: http://<?php echo $local_ip; ?></p>
+                            <img class="qr-image" src="/ip_qr.png?v=<?php echo $qr_version; ?>" alt="QR Code IP TVBOX">
                         </div>
                     <?php } else { ?>
                         <h3><?php echo ($saved_payload && !$show_form) ? '🤗 Registrado com sucesso!' : '✍🏻 Cadastro rápido'; ?></h3>
@@ -353,6 +314,22 @@ if ($client_label === 'TVBOX') {
                         localStorage.setItem(key, '0');
                     }
                 });
+            })();
+            (function () {
+                var info = document.getElementById('resolution-info');
+                if (!info) return;
+                function readViewport() {
+                    var w = window.innerWidth || document.documentElement.clientWidth || 0;
+                    var h = window.innerHeight || document.documentElement.clientHeight || 0;
+                    return { w: w, h: h };
+                }
+                function updateResolution() {
+                    var vp = readViewport();
+                    info.textContent = 'Resolução: ' + vp.w + ' x ' + vp.h;
+                }
+                updateResolution();
+                window.addEventListener('resize', updateResolution);
+                window.addEventListener('orientationchange', updateResolution);
             })();
         </script>
 </body>

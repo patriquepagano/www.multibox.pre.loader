@@ -28,7 +28,7 @@ fi
 
 ## Notas de layout global (CSS compartilhado)
 - Ponto central de CSS global: `php/00.head.css.php` (links para CSS base) + `php/01.style.php` (estilos globais).
-- A maioria das páginas PHP inclui ambos no `<head>` (ex.: `index.php`, `news.php`, `painel.php`, `apps.php`, `user.php`, `log.php`, `userserial.php`, `contato.php`, `revendedor.php`, `messageToAdmin.php`, etc.).
+- No site atual apenas `index.php` inclui esses arquivos no `<head>`.
 - `php/00.head.css.php` puxa os arquivos `/.code/css/*.css` (Bootstrap, heroic-features, catalogo, utils, blueimp-gallery, video-js).
 - `php/01.style.php` define tema escuro e grid padrão (`.news-grid`, `.news-block`), além do toggle `.force-desktop-theme` para forçar o tema escuro em mobile.
 - `php/01.style.php` também define ajustes de densidade por altura (telas altas/médias/baixas) para caber mais blocos sem rolagem.
@@ -41,16 +41,23 @@ fi
   - `iOS` quando UA contém `iphone|ipad|ipod`.
   - `PC Win` quando UA contém `windows`.
   - `PC Linux` quando UA contém `x11` ou `linux`.
-  - Fallback: `MOBILE`.
-- O navbar usa essa detecção em `index.navbar.php`:
-  - `AndroidCel`/`iOS` => navbar com glyphicons.
-  - `TVBOX`/`PC Win`/`PC Linux` => navbar com botões SVG.
+- Fallback: `MOBILE`.
 
-## TVBOX: layout sem rolagem (index)
-- Navbar vertical à direita, fixo, botões em coluna (ajustado em `index.navbar.php`).
-- Para evitar sobreposição do navbar, o conteúdo ganha `margin-right` e `width` calculados no `php/01.style.php`.
-- O Chrome 55 do TVBOX não suporta CSS Grid corretamente; a solução está em **Flexbox**.
-- Para manter 2 blocos por “página” e evitar quebra, a combinação que funcionou foi:
-  - `news-grid` com `display: flex`, `flex-wrap: nowrap`, `align-items: stretch` e altura baseada em `100vh`.
-  - `news-block` com `flex: 1 1 0`, `min-width: 0`, `height: calc(100vh - 20px)` e `overflow: hidden`.
-  - `index.php` aplica o modo TVBOX e o botão “Proxima” para paginar os blocos.
+## Estado atual do site (atualizado)
+- O site atual usa somente `index.php` como pagina principal
+
+## Index.php: objetivo e funcionamento atual
+- Objetivo: pagina unica do painel, com comunicado principal e area de interacao (QR no TVBOX ou cadastro em PC/celular).
+- Detecao de device: por User-Agent, define `client_label` e `client_class` (`TVBOX`, `AndroidCel`, `iOS`, `PC Win`, `PC Linux`, fallback `MOBILE`).
+- Conteudo: um unico bloco com texto do comunicado + area inferior condicional:
+  - `TVBOX`: mostra QR Code do IP local do painel.
+  - `PC/AndroidCel/iOS`: mostra cadastro rapido e resumo do ultimo cadastro salvo.
+- QR Code: gera `ip_qr.png` usando `/.code/qrcode/qrlib.php` e cache em `/.code/qrcode/cache` apenas quando `client_label === 'TVBOX'`.
+- Cadastro: grava linhas JSON em `/MinhaBox.json`, e le a ultima linha para exibir o ultimo cadastro.
+- CSS: usa `php/00.head.css.php` + `php/01.style.php`, tema escuro e layout em coluna unica (sem grid/colunas).
+- JS: apenas toggle de tema escuro no mobile (salvo em `localStorage`).
+
+## Problema em aberto
+- No TVBOX (Chrome antigo + controle remoto), a rolagem da pagina para antes do final; QR Code fica parcialmente fora da area visivel.
+- A hipotese atual e limitacao de scroll no navegador/controle remoto, nao resolvida ainda.
+

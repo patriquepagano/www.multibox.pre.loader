@@ -111,22 +111,40 @@
             color: #8b949e;
         }
         .news-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            align-items: start;
+            display: block;
             text-align: left;
-            grid-auto-rows: 1fr;
         }
-        .news-block {
-            background-color: #0f1419;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 14px;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
+    .news-block {
+        background-color: #0f1419;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .page-index-main .news-block {
+        display: block;
+        height: auto;
+    }
+    .page-index-main .news-block {
+        overflow: visible;
+    }
+    .qr-section {
+        display: block;
+        margin-top: 8px;
+    }
+    .qr-image {
+        display: block;
+        width: 240px;
+        max-width: 100%;
+        height: auto;
+        margin-top: 8px;
+        background: #ffffff;
+        padding: 6px;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
         .news-block h3,
         .news-block h4 {
             margin: 0 0 8px 0;
@@ -231,9 +249,15 @@
             margin-bottom: 12px;
         }
     }
-    /* TVBOX index: layout sem rolagem com duas colunas */
+    /* TVBOX index: layout em uma coluna com rolagem liberada */
     .client-tvbox .page-index-main {
-        overflow: hidden;
+        overflow: visible;
+    }
+    .client-tvbox html,
+    .client-tvbox body {
+        height: auto;
+        min-height: 100%;
+        overflow-y: auto;
     }
     .client-tvbox body {
         padding-top: 0 !important;
@@ -257,32 +281,25 @@
         padding-right: 6px;
     }
     .client-tvbox .page-index-main .news-grid {
-        display: flex !important;
-        flex-wrap: nowrap;
-        align-items: stretch;
+        display: block !important;
         text-align: left;
-        height: calc(100vh - 20px);
-    }
-    .client-tvbox .page-index-main .tvbox-grid {
-        display: flex !important;
-        flex-wrap: nowrap;
-        align-items: stretch;
-        text-align: left;
-    }
-    .client-tvbox .page-index-main .news-grid {
         margin-top: 0;
     }
     .client-tvbox .page-index-main .news-block {
-        flex: 1 1 0;
-        width: auto !important;
+        display: block;
+        width: 100% !important;
         min-width: 0;
-        margin: 0 8px 0 0 !important;
-        height: calc(100vh - 20px);
+        margin: 0 0 12px 0 !important;
+        height: auto;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
-    .client-tvbox .page-index-main .news-block:last-child {
-        margin-right: 0 !important;
+    .client-tvbox html,
+    .client-tvbox body {
+        height: auto;
+        min-height: 100%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
     .client-tvbox .page-index-main .news-block {
         margin-top: 0;
@@ -297,8 +314,7 @@
     /* Densidade por altura da tela (TVs e resolucoes variadas) */
     @media (min-height: 900px) {
         .news-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            display: block;
         }
         .news-block {
             padding: 12px;
@@ -315,8 +331,7 @@
     }
     @media (min-height: 700px) and (max-height: 899px) {
         .news-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            display: block;
         }
         .news-block {
             padding: 12px;
@@ -333,8 +348,7 @@
     }
     @media (max-height: 699px) {
         .news-grid {
-            grid-template-columns: 1fr;
-            gap: 10px;
+            display: block;
         }
         .news-block {
             padding: 12px;
@@ -349,12 +363,24 @@
             line-height: 1.4;
         }
     }
-    /* TVBOX 720p: forca duas colunas para evitar rolagem */
-    @media (min-width: 1150px) and (max-width: 1360px) and (min-height: 680px) and (max-height: 770px) {
-        .client-tvbox .news-grid {
-            display: grid !important;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
+    @media (min-width: 1800px) {
+        .news-block {
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .news-block h3,
+        .news-block h4 {
+            font-size: 22px;
+        }
+        .news-block p,
+        .news-block li,
+        .news-block input,
+        .news-block button {
+            font-size: 16px;
+        }
+        .panel-tools .info-btn {
+            font-size: 13px;
+            padding: 4px 10px;
         }
     }
 </style>
