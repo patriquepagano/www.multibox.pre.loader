@@ -79,7 +79,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             height: 100vh;
             width: 100vw;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
         }
         .tvbox-720-inner {
@@ -89,7 +89,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             max-height: 100%;
             display: flex;
             gap: 12px;
-            padding: 11px 11px 65px 11px;
+            padding: 8px 4px 8px 4px;
             box-sizing: border-box;
         }
         .tvbox-720-left,
@@ -112,30 +112,30 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             text-align: center;
         }
         .tvbox-720-title {
-            font-size: 32px;
+            font-size: 48px;
             margin: 0 0 10px 0;
         }
         .tvbox-720-left p,
         .tvbox-720-left li {
-            font-size: 20px;
-            line-height: 1.34;
+            font-size: 30px;
+            line-height: 1.35;
             margin: 6px 0;
         }
         .tvbox-720-left ol {
             margin: 6px 0 8px 20px;
         }
         .tvbox-720-qr-title {
-            font-size: 24px;
+            font-size: 36px;
             margin: 0 0 8px 0;
             text-align: center;
         }
         .tvbox-720-qr-note {
-            font-size: 17px;
+            font-size: 25px;
             margin: 6px 0 10px 0;
         }
         .tvbox-720-qr-copy p {
-            font-size: 17px;
-            line-height: 1.3;
+            font-size: 25px;
+            line-height: 1.32;
             margin: 6px 0;
         }
         .tvbox-720-qr-copy,
@@ -152,13 +152,13 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
             margin: 10px 0;
         }
         .tvbox-720-qr-ip {
-            font-size: 16px;
+            font-size: 24px;
             margin: 0 0 10px 0;
             word-break: break-word;
         }
         .tvbox-720-qr-image {
-            width: 320px;
-            height: 320px;
+            width: 480px;
+            height: 480px;
             max-width: 38vh;
             max-height: 38vh;
             border-radius: 8px;
@@ -169,7 +169,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
     <div class="tvbox-720">
         <div class="tvbox-720-inner">
             <div class="tvbox-720-left">
-                <h3 class="tvbox-720-title">🤖 Painel TVBOX 🙋🏻‍♂️ O seu Registro é: 📝『 3457 』</h3>
+                <h3 class="tvbox-720-title">🤖 Painel TVBOX - O seu Registro é: 📝『 3457 』</h3>
                 <div>
                     <p>🙂 Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
                     <p>⚠️ Nos últimos meses, muitas marcas pararam por bloqueios e por questões de impostos e taxas. 💸 Com menos clientes em serviços oficiais de streaming, a arrecadação caiu, e isso mudou o cenário no Brasil.</p>
@@ -180,7 +180,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                         <li>🤝 Revendedor: entrega a solução final da marca, publica os aplicativos e presta o suporte ao cliente.</li>
                     </ol>
                     <p>⚠️ Importante: os aplicativos e o conteúdo são de responsabilidade do 🤝 revendedor. 🚫 Nós não temos acesso aos 📦 apps nem ao conteúdo enviado.</p>
-                    <p>📝 Por que estamos exigindo cadastramento? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas 💸, e isso pressiona toda as 😩 equipes. Além disso, o crescimento de ativações 📈 e o controle exigido pelos 🏛️ órgãos reguladores aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos 📒 catalogar todos os aparelhos por revendedor oficial.</p>
+                    <p>📝 Por que estamos pedindo recadastro? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas 💸, e isso pressiona toda as 😩 equipes. Além disso, o crescimento de ativações 📈 e o controle exigido pelos "órgãos reguladores 🔫" aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos 📒 catalogar todos os aparelhos por revendedor oficial.</p>
                 </div>
             </div>
             <div class="tvbox-720-right">
@@ -191,7 +191,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                 <div class="tvbox-720-sep"></div>
                 <h3 class="tvbox-720-qr-title">📲 Entre em contato Conosco 🛠️</h3>
                 <div class="tvbox-720-qr-desc">
-                    <p>Se não lembra ou perdeu o contato com o revendedor, use o QR Code abaixo para abrir o 🤖 Painel TVBOX no celular e preencher o formulário. Nós vamos te ajudar.</p>
+                    <p>Se não lembra ou perdeu o contato com o revendedor, use o QR Code abaixo para abrir o Painel TVBOX no celular e preencher o formulário. Nós vamos te ajudar.</p>
                 </div>
                 <div class="tvbox-720-qr-note">Use o QR Code para abrir este painel no celular.</div>
                 <div class="tvbox-720-qr-ip">Endereço local: http://<?php echo $local_ip; ?></div>

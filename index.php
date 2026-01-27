@@ -60,6 +60,12 @@ if ($client_label === 'TVBOX') {
     exit;
 }
 
+// PC usa o layout 1080p para facilitar testes
+if ($client_label === 'PC Win' || $client_label === 'PC Linux') {
+    require $_SERVER['DOCUMENT_ROOT'] . "/index.1080.php";
+    exit;
+}
+
 // QR Code do IP local (usado apenas no modo TVBOX)
 if (!function_exists('getLocalIp')) {
     function getLocalIp()

@@ -27,6 +27,25 @@ fi
 - Quando eu pedir um comando simples para debugar em terminal remoto, sempre envie os comandos em blocos de código (```bash ... ```), um comando por bloco, para facilitar copiar.
 
 
+## Estado atual do site (agora)
+- Ponto de entrada: `index.php` decide o layout e delega para páginas dedicadas.
+- TVBOX: detectado por UA (`Android 7.1.2`), carrega layout dedicado `index.720.php`.
+  - Primeiro load injeta JS para capturar `window.innerHeight` e recarrega a própria URL com `?tvh=...`.
+  - Com `tvh` presente, faz `require` do `index.720.php` e encerra.
+- PC (Windows/Linux): carrega `index.1080.php` para testar o layout 1080p no desktop.
+- Mobile (Android/iOS e fallback): permanece no fluxo tradicional dentro do `index.php`.
+
+## Layouts dedicados (TVBOX/PC)
+- `index.720.php`: duas colunas fixas sem scroll (comunicado à esquerda, QR à direita).
+- `index.1080.php`: cópia do `index.720.php` com fontes/QR ampliados para 1080p.
+- Ambos incluem `php/00.head.css.php` e `php/01.style.php`.
+- O conteúdo é travado em tela única, sem rolagem.
+
+## QR Code (atual)
+- Geração do QR Code do IP local usando `/.code/qrcode/qrlib.php`.
+- Cache em `/.code/qrcode/cache` e IP em `/.ip_local.txt`.
+- Arquivo gerado: `/ip_qr.png` (com cache bust por `filemtime`).
+
 ## Detecção de device (atual)
 - A detecção atual é por User-Agent (UA) e está centralizada em `index.php`.
 - Regras de etiqueta:
@@ -36,19 +55,4 @@ fi
   - `PC Win` quando UA contém `windows`.
   - `PC Linux` quando UA contém `x11` ou `linux`.
 - Fallback: `MOBILE`.
-
-## Estado atual do site (atualizado)
-- O site atual usa somente `index.php` como pagina principal e paginas por resoluções para cada tipo de monitor ligado ao tvbox
-
-## Index.php: objetivo e funcionamento atual
-- Objetivo: pagina unica do painel, com comunicado principal e area de interacao (QR no TVBOX ou cadastro em PC/celular).
-- Detecao de device: por User-Agent, define `client_label` e `client_class` (`TVBOX`, `AndroidCel`, `iOS`, `PC Win`, `PC Linux`, fallback `MOBILE`).
-- Conteudo: um unico bloco com texto do comunicado + area inferior condicional:
-  - `TVBOX`: mostra QR Code do IP local do painel.
-  - `PC/AndroidCel/iOS`: mostra cadastro rapido e resumo do ultimo cadastro salvo.
-- QR Code: gera `ip_qr.png` usando `/.code/qrcode/qrlib.php` e cache em `/.code/qrcode/cache` apenas quando `client_label === 'TVBOX'`.
-- Cadastro: grava linhas JSON em `/MinhaBox.json`, e le a ultima linha para exibir o ultimo cadastro.
-- CSS: usa `php/00.head.css.php` + `php/01.style.php`, tema escuro e layout em coluna unica (sem grid/colunas).
-- JS: apenas toggle de tema escuro no mobile (salvo em `localStorage`).
-
 
