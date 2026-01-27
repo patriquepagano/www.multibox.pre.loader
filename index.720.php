@@ -158,10 +158,10 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                     <ol>
                         <li>🏭 Fabricante: produz o aparelho fisico e garante a qualidade do hardware.</li>
                         <li>🛠️ Plataforma (nós): fornecemos o sistema base, atualizações e a infraestrutura que mantém o aparelho funcionando.</li>
-                        <li>🧑‍💼 Revendedor: entrega a solução final da marca, publica os aplicativos e presta o suporte ao cliente.</li>
+                        <li>👨‍💼 Revendedor: entrega a solução final da marca, publica os aplicativos e presta o suporte ao cliente.</li>
                     </ol>
                     <p>⚠️ Importante: os aplicativos e o conteúdo são de responsabilidade do revendedor. 📵 Nós não temos acesso aos apps nem ao conteúdo enviado.</p>
-                    <p>🧾 Por que estamos pedindo recadastro? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas, e isso pressiona toda as equipes. 📈 Além disso, o crescimento de ativações e o controle exigido pelos órgãos reguladores aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos organizar todos os aparelhos por revendedor oficial.</p>
+                    <p>📝 Por que estamos pedindo recadastro? 🇧🇷 O Brasil vive um momento de alta carga de impostos e taxas, e isso pressiona toda as equipes. 📈 Além disso, o crescimento de ativações e o controle exigido pelos órgãos reguladores aumentaram nossas responsabilidades. 🛡️ Para proteger seu aparelho e manter a estabilidade do sistema, precisamos organizar todos os aparelhos por revendedor oficial.</p>
                 </div>
             </div>
             <div class="tvbox-720-right">
