@@ -325,6 +325,35 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
                             <p><input type="text" name="whatsapp" placeholder="WhatsApp (padrão +55 ddd 9 12345678)" style="width: 100%;" required></p>
                             <p><input type="text" name="telegram" placeholder="Telegram (padrão +55 ddd 9 12345678)" style="width: 100%;" required></p>
                             <p><input type="text" name="tvbox" placeholder="TVBOX (ex: sala, cozinha, garagem)" style="width: 100%;" required></p>
+
+
+
+logi vai ser nome de usuario + OS TVBOX QUE ELE TIVER
+name="name" placeholder="Nome (digite seu nickname)"
+
+
+tipo combobox
+1 - Conversor smart TV youtube, netflix Prime Video
+2 - sisema  de midia indoor
+3 - sistema de midia corporativa
+4 - retrojogos
+5 - terminal PDV
+6 - caixa automatica de vendas
+
+
+
+
+1 - marca e modelo do seu tvbox
+2 - nome da loja ou revendedor
+3 - deixe seu comentario
+
+
+
+
+
+
+
+
                             <p><button type="submit" class="btn btn-default">Salvar</button></p>
                         </form>
                     <?php } ?>

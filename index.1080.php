@@ -169,9 +169,9 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
     <div class="tvbox-720">
         <div class="tvbox-720-inner">
             <div class="tvbox-720-left">
-                <h3 class="tvbox-720-title">🤖 Painel TVBOX - O seu Registro é: 📝『 3457 』</h3>
+                <h3 class="tvbox-720-title">Bem vindo ao Painel do TVBOX | O seu Registro é: 📝『 3457 』</h3>
                 <div>
-                    <p>🙂 Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
+                    <p>🧘🏻‍♀️ Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
                     <p>⚠️ Nos últimos meses, muitas marcas pararam por bloqueios e por questões de impostos e taxas. 💸 Com menos clientes em serviços oficiais de streaming, a arrecadação caiu, e isso mudou o cenário no Brasil.</p>
                     <p>👥 Entenda as equipes envolvidas:</p>
                     <ol>
