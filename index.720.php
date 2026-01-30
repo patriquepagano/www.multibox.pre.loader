@@ -176,7 +176,7 @@ $qr_version = file_exists($qr_file) ? filemtime($qr_file) : time();
     <div class="tvbox-720">
         <div class="tvbox-720-inner">
             <div class="tvbox-720-left">
-                <h3 class="tvbox-720-title">Bem vindo ao Painel do TVBOX | O seu Registro é: 3457</h3>
+                <h3 class="tvbox-720-title">Bem vindo! | O seu Registro é: 3457</h3>
                 <div>
                     <p>Fique tranquilo: o aparelho está funcionando normalmente e continua recebendo atualizações de segurança.</p>
                     <p>⚠️ O mercado brasileiro de TV Box passa por um período de transição, marcado por bloqueios, mudanças regulatórias e maior carga tributária. Esse cenário impactou a operação de diversas marcas e reforçou a necessidade de soluções mais estáveis, legais e sustentáveis.</p>
